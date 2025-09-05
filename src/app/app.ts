@@ -11,5 +11,5 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrls: ['./app.css'],
 })
 export class App {
-  protected readonly title = signal('smartfeed');
+  protected readonly title = signal('Smartfeed');
 }

@@ -1,18 +1,11 @@
-<h1>{{ title() }}</h1>
+<div class="p-6 bg-blue-600 text-white text-xl font-bold rounded-lg shadow-lg">
+  {{ title() }}
 
-<nav>
+  <nav>
   <a routerLink="">Charts</a> |
   <a routerLink="ways">Ways</a>
 </nav>
-
-<router-outlet></router-outlet>
-
-<h1 class="text-4xl font-bold text-blue-600">
-  Tailwind is working! 🎉
-</h1>
-
-<div class="flex gap-4 mt-4">
-  <button class="px-4 py-2 bg-green-500 text-white rounded-lg">Save</button>
-  <button class="px-4 py-2 bg-red-500 text-white rounded-lg">Delete</button>
 </div>
 
+
+<router-outlet></router-outlet>
