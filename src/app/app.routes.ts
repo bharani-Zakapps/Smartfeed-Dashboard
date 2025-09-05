@@ -1,9 +1,13 @@
 import { Routes } from '@angular/router';
-import { ChartsComponent } from './charts/charts';
-import { Ways } from './ways/ways';
 
 export const routes: Routes = [
-  { path: '', component: ChartsComponent },  // default route
-  { path: 'ways', component: Ways },         // /ways
-  { path: '**', redirectTo: '' }             // fallback
+  {
+    path: '',
+    loadComponent: () => import('./charts/charts').then((m) => m.ChartsComponent), // default
+  },
+  {
+    path: 'ways',
+    loadComponent: () => import('./ways/ways').then((m) => m.Ways), // /ways
+  },
+  { path: '**', redirectTo: '' }, // fallback
 ];

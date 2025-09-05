@@ -22,7 +22,7 @@ export type WaysChartOptions = {
   markers: ApexMarkers;
   stroke: ApexStroke;
   fill: ApexFill;
-  colors?: string[];
+  colors: string[];
   legend: ApexLegend;
   dataLabels:ApexDataLabels
 };
