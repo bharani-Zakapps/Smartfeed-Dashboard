@@ -1,0 +1,7 @@
+<div class="flex gap-5 p-5">
+    <app-sidenav  [items]="categories" [placeholder]="'Select department'" (itemSelected)="onCategorySelect($event)"></app-sidenav>
+    <app-table 
+      [displayedColumns]="columns"
+      [tableData]="data">
+    </app-table>
+</div>

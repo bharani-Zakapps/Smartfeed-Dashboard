@@ -1,0 +1,11 @@
+<div class="flex gap-5 p-5">
+  <app-sidenav [items]="keywords" [placeholder]="'Find keywords'" (itemSelected)="onSelectKeyword($event)">
+  </app-sidenav>
+
+  <div id="chart" class="w-full shadow-[0px_0px_15px_0px_#0000000D] bg-white py-6 px-7">
+    <apx-chart #chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+      [yaxis]="chartOptions.yaxis" [title]="chartOptions.title" [markers]="chartOptions.markers"
+      [stroke]="chartOptions.stroke" [legend]="chartOptions.legend">
+    </apx-chart>
+  </div>
+</div>

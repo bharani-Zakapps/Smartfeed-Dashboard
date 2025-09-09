@@ -12,6 +12,7 @@ import {
   ApexFill,
   ApexDataLabels,
 } from 'ng-apexcharts';
+import { Sidenav } from '../../shared/sidenav/sidenav';
 
 export type WaysChartOptions = {
   series: ApexAxisChartSeries;
@@ -24,15 +25,15 @@ export type WaysChartOptions = {
   fill: ApexFill;
   colors: string[];
   legend: ApexLegend;
-  dataLabels:ApexDataLabels
+  dataLabels: ApexDataLabels
 };
 
 @Component({
   selector: 'app-ways',
   standalone: true,
-  imports: [NgApexchartsModule],
-  templateUrl: './ways.html',
-  styleUrls: ['./ways.css'],
+  imports: [NgApexchartsModule, Sidenav],
+  templateUrl: './position-visibility.html',
+  styleUrls: ['./position-visibility.css'],
 })
 export class Ways {
   @ViewChild('chart') chart!: ChartComponent;
@@ -41,7 +42,7 @@ export class Ways {
 
   constructor() {
     this.chartOptions = {
-       dataLabels: { enabled: false },
+      dataLabels: { enabled: false },
       series: [
         { name: '1-3', data: [5, 6, 4, 7, 5, 6, 7, 8, 6, 9, 7, 8] },
         { name: '4-10', data: [10, 9, 11, 10, 12, 9, 12, 11, 13, 12, 14, 11] },
@@ -108,5 +109,37 @@ export class Ways {
         },
       },
     };
+  }
+  categories = [
+    'Action Figures', 'Dolls & Soft Toys', 'Outdoor Toys', 'Video Games', 'Arts & Crafts', 'Baby & Toddler', 'Educational Toys', 'LEGO', 'Ride-On Toys', 'Board Games', 'Model Trains', 'Science Kits'
+  ];
+  categorySeriesData:any =  {
+    'Action Figures': [
+      [5, 6, 4, 7, 5, 6, 7, 8, 6, 9, 7, 8],
+      [10, 9, 11, 10, 12, 9, 12, 11, 13, 12, 14, 11],
+      [20, 18, 19, 21, 20, 22, 22, 20, 21, 23, 22, 24],
+      [50, 45, 48, 52, 50, 49, 52, 47, 50, 54, 52, 51],
+      [100, 110, 105, 115, 108, 112, 102, 112, 107, 117, 110, 114]
+    ],
+    'Dolls & Soft Toys': [
+      [16, 57, 35, 18, 26, 67, 8, 90, 47, 10, 84, 89],
+      [11, 10, 12, 11, 13, 10, 13, 12, 14, 13, 15, 12],
+      [21, 19, 20, 22, 21, 23, 23, 21, 22, 24, 23, 25],
+      [51, 46, 49, 53, 51, 50, 53, 48, 51, 55, 53, 52],
+      [101, 111, 106, 116, 109, 113, 103, 113, 108, 118, 111, 115]
+    ]
+  };
+  onSelectPosition(category: string) {
+    const data = this.categorySeriesData[category];
+
+    if (data) {
+      this.chartOptions.series = [
+        { name: '1-3', data: data[0] },
+        { name: '4-10', data: data[1] },
+        { name: '11-20', data: data[2] },
+        { name: '21-50', data: data[3] },
+        { name: '51+', data: data[4] }
+      ];
+    }
   }
 }

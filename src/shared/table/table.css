@@ -1,0 +1,13 @@
+
+
+::ng-deep .mat-mdc-header-row,
+::ng-deep .mat-mdc-row {
+    font-family: 'Inter', sans-serif !important;
+    height: 36px !important;
+}
+::ng-deep  .mat-mdc-header-cell,
+::ng-deep  .mat-mdc-cell {
+    border-color: #E8E8E8 !important;
+    height: 36px !important;
+}
+

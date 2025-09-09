@@ -1,0 +1,18 @@
+<div>
+    <table mat-table [dataSource]="tableData" class="mat-elevation-z1 w-full table-fixed shadow-[0_0_15px_0_#0000000D]">
+
+        <!-- Dynamic column rendering -->
+        <ng-container *ngFor="let col of displayedColumns; let i = index" [matColumnDef]="col">
+            <th mat-header-cell *matHeaderCellDef class="text-left !h-9 !font-medium"
+                [ngClass]="i === 0 ? 'w-[133px] min-w-[133px] max-w-[133px]' : 'w-[100px] min-w-[100px] max-w-[100px]'">
+                {{ col }}</th>
+            <td mat-cell *matCellDef="let element" class="!h-9"
+                [ngClass]="i === 0 ? 'w-[133px] min-w-[133px] max-w-[133px]' : 'w-[100px] min-w-[100px] max-w-[100px]'">
+                {{ element[col] }}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>

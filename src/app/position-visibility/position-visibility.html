@@ -1,0 +1,12 @@
+<div class="flex gap-5 p-5">
+  <app-sidenav [items]="categories" [placeholder]="'Select department'" (itemSelected)="onSelectPosition($event)"></app-sidenav>
+
+
+  <div id="ways-chart" class="w-full">
+    <apx-chart #chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+      [yaxis]="chartOptions.yaxis" [title]="chartOptions.title" [markers]="chartOptions.markers"
+      [stroke]="chartOptions.stroke" [fill]="chartOptions.fill" [colors]="chartOptions.colors"
+      [legend]="chartOptions.legend" [dataLabels]="chartOptions.dataLabels">
+    </apx-chart>
+  </div>
+</div>

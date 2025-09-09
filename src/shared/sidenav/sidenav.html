@@ -1,0 +1,19 @@
+<!-- sidenav.html -->
+<div class="w-72 bg-gray-100 gap-4 flex flex-col">
+  <input type="text" [placeholder]="placeholder" class="w-full border rounded p-2 h-10" />
+
+  <h3 *ngIf="title" class="mb-2 font-semibold">{{ title }}</h3>
+
+  <div *ngIf="items.length && items[0].keyword" class="flex justify-between font-semibold text-sm pb-1 mb-2">
+    <span>Keyword</span>
+    <span>Search Volume</span>
+  </div>
+
+  <ul class="flex flex-col gap-1">
+    <li *ngFor="let item of items" (click)="onSelect(item)"
+      class="cursor-pointer items-center hover:bg-gray-200  rounded flex justify-between h-[30px]" [ngClass]="selectedItem === item ? 'bg-[#ACDAFF] border border-[#3BB1FF]' : 'hover:bg-transparent'">
+      <span>{{ item.keyword || item.name || item}}</span>
+      <span *ngIf="item.volume" class="text-gray-500 text-sm">{{ item.volume }}</span>
+    </li>
+  </ul>
+</div>
