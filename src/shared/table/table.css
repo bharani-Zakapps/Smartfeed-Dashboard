@@ -9,5 +9,9 @@
 ::ng-deep  .mat-mdc-cell {
     border-color: #E8E8E8 !important;
     height: 36px !important;
+    padding: 0!important;
 }
 
+::ng-deep .mat-mdc-header-cell:last-child,::ng-deep  .mat-mdc-cell:last-child {
+    width: 100% ;
+}

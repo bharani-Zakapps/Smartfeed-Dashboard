@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Table } from '../../shared/table/table';
+import { Slider } from '../../shared/slider/slider';
 
 @Component({
   selector: 'app-department',
-  imports: [Table],
+  imports: [Table,Slider],
   templateUrl: './department.html',
   styleUrl: './department.css'
 })

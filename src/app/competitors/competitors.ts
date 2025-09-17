@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { Table } from '../../shared/table/table';
 import { Sidenav } from '../../shared/sidenav/sidenav';
+import { Slider } from '../../shared/slider/slider';
+import { MonthView } from '../../shared/month-view/month-view';
+
 
 @Component({
   selector: 'app-competitors',
   standalone: true,
-  imports: [Table, Sidenav],
+  imports: [Table, Sidenav,Slider,MonthView],
   templateUrl: './competitors.html',
   styleUrl: './competitors.css'
 })

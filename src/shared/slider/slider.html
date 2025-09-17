@@ -1,0 +1,10 @@
+<div class="custom-slider flex flex-col gap-3 w-[515px] whitespace-nowrap">
+    <div class="flex items-center gap-[10px]">
+        <span class="text-sm font-medium">Position</span>
+        <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (userChange)="onSlide($event)">
+        </ngx-slider>
+    </div>
+    <div class="text-[#797979] text-xs">
+        Adjusting the position will display the percentage of keywords within the selected area
+    </div>
+</div>

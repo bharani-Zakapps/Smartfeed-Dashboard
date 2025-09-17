@@ -1,0 +1,21 @@
+<div class="flex justify-between items-center gap-5">
+    <div class="flex gap-4 flex-wrap">
+        <span *ngFor="let month of months" (click)="selectMonth(month)" class="cursor-pointer" [ngClass]="{
+        'border-b-2 border-[#272727] font-medium text-[#272727]': selectedMonth === month,
+        'text-[#272727]': selectedMonth !== month
+      }">
+            {{ month }}
+        </span>
+        /
+        <span *ngFor="let year of years" (click)="selectYear(year)" class="cursor-pointer" [ngClass]="{
+          'border-b-2 border-[#272727] font-medium text-[#272727]': selectedYear === year,
+          'text-[#272727]': selectedYear !== year
+        }">
+            {{ year }}
+        </span>
+    </div>
+    <div class="flex gap-3 items-center border border-[#BDBDBD] py-[2px] px-2 rounded-[4px] cursor-pointer">
+        <img src="images/line_axis.svg" alt="line axis" />
+        <span>Graph view</span>
+    </div>
+</div>

@@ -12,6 +12,7 @@ import {
   ApexLegend
 } from 'ng-apexcharts';
 import { Sidenav } from '../../shared/sidenav/sidenav';
+import { MonthView } from '../../shared/month-view/month-view';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -27,7 +28,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-charts',
   standalone: true,
-  imports: [NgApexchartsModule, Sidenav],
+  imports: [NgApexchartsModule, Sidenav,MonthView],
   templateUrl: './keyword-tracker.html',
   styleUrls: ['./keyword-tracker.css'],
 })

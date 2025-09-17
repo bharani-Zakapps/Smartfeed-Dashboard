@@ -13,6 +13,7 @@ import {
   ApexDataLabels,
 } from 'ng-apexcharts';
 import { Sidenav } from '../../shared/sidenav/sidenav';
+import { MonthView } from '../../shared/month-view/month-view';
 
 export type WaysChartOptions = {
   series: ApexAxisChartSeries;
@@ -31,7 +32,7 @@ export type WaysChartOptions = {
 @Component({
   selector: 'app-ways',
   standalone: true,
-  imports: [NgApexchartsModule, Sidenav],
+  imports: [NgApexchartsModule, Sidenav,MonthView],
   templateUrl: './position-visibility.html',
   styleUrls: ['./position-visibility.css'],
 })
@@ -100,7 +101,7 @@ export class Ways {
       legend: {
         show: true,
         position: 'top', // 👈 show legend on top
-        horizontalAlign: 'center',
+        horizontalAlign: 'left',
         onItemClick: {
           toggleDataSeries: true, // 👈 allows hiding/removing series when clicked
         },

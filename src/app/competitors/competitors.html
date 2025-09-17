@@ -1,7 +1,10 @@
 <div class="flex gap-5 p-5">
-    <app-sidenav  [items]="categories" [placeholder]="'Select department'" (itemSelected)="onCategorySelect($event)"></app-sidenav>
-    <app-table 
-      [displayedColumns]="columns"
-      [tableData]="data">
-    </app-table>
+    <app-sidenav [items]="categories" [placeholder]="'Select department'"
+        (itemSelected)="onCategorySelect($event)"></app-sidenav>
+    <div class="flex flex-col gap-5 bg-white py-10 px-7 w-full">
+        <app-month-view></app-month-view>
+        <app-slider></app-slider>
+        <app-table [displayedColumns]="columns" [tableData]="data">
+        </app-table>
+    </div>
 </div>
