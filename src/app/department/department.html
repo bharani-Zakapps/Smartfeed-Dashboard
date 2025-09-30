@@ -1,5 +1,7 @@
 <div class="m-5 px-7 py-10 shadow-[0_0_15px_0_#0000000D] bg-white flex flex-col gap-5 rounded-md">
-  <app-slider></app-slider>
+  <app-slider (childValueChange)="handleChildValue($event.value, $event.highValue ?? $event.value)"></app-slider>
+
+
   <app-table
     [displayedColumns]="columns"
     [tableData]="data">

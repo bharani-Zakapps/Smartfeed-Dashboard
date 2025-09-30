@@ -3,7 +3,7 @@
         (itemSelected)="onCategorySelect($event)"></app-sidenav>
     <div class="flex flex-col gap-5 bg-white py-10 px-7 w-full">
         <app-month-view></app-month-view>
-        <app-slider></app-slider>
+        <app-slider (childValueChange)="handleChildValue($event.value, $event.highValue ?? $event.value)"></app-slider>
         <app-table [displayedColumns]="columns" [tableData]="data">
         </app-table>
     </div>

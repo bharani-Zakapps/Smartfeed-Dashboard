@@ -1,14 +1,48 @@
 <div class="flex gap-5 p-5">
-  <app-sidenav [items]="keywords" [placeholder]="'Find keywords'" (itemSelected)="onSelectKeyword($event)">
+  <app-sidenav
+    [items]="keywords"
+    [chipKeywords]="selectedKeywords"
+    [placeholder]="'Find keywords'"
+    (itemSelected)="onSelectKeyword($event)"
+  >
   </app-sidenav>
+
   <div class="w-full shadow-[0px_0px_15px_0px_#0000000D] bg-white py-6 px-7 flex flex-col gap-5">
     <app-month-view></app-month-view>
+
+    <!-- Selected Keywords Chips -->
+    <div class="flex flex-wrap gap-2 mb-4 matChipText" *ngIf="selectedKeywords.length > 0">
+      <mat-chip
+        *ngFor="let keyword of selectedKeywords"
+        [removable]="true"
+        (removed)="onDeleteKeyword(keyword.keyword)"
+        class="border border-[#909090]"
+      >
+      
+        <span class="text-xs">{{ keyword.keyword }} </span
+        >:<span class="text-xs font-bold">{{ keyword.volume }}</span>
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </div>
+
     <div id="chart">
-      <apx-chart #chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
-        [yaxis]="chartOptions.yaxis"  [markers]="chartOptions.markers"
-        [stroke]="chartOptions.stroke" [legend]="chartOptions.legend">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [yaxis]="chartOptions.yaxis"
+        [markers]="chartOptions.markers"
+        [stroke]="chartOptions.stroke"
+        [legend]="chartOptions.legend"
+      >
       </apx-chart>
     </div>
+  <span
+  class="text-sm"
+  [ngClass]="selectedKeywords.length === 3 ? 'text-red-500' : 'text-[#797979]'"
+>
+  You can select up to 3 keywords at a time to compare on the graph:
+</span>
   </div>
-
 </div>

@@ -1,18 +1,62 @@
-<div>
-    <table mat-table [dataSource]="tableData" class="mat-elevation-z1 w-full table-fixed !bg-white">
-
-        <!-- Dynamic column rendering -->
-        <ng-container *ngFor="let col of displayedColumns; let i = index" [matColumnDef]="col">
-            <th mat-header-cell *matHeaderCellDef class="text-left !h-9 !font-medium"
-                [ngClass]="i === 0 ? 'w-[133px] min-w-[133px] max-w-[133px]' : 'w-[100px] min-w-[100px] max-w-[100px]'">
-                {{ col }}</th>
-            <td mat-cell *matCellDef="let element" class="!h-9"
-                [ngClass]="i === 0 ? 'w-[133px] min-w-[133px] max-w-[133px]' : 'w-[100px] min-w-[100px] max-w-[100px]'">
-                {{ element[col] }}
-            </td>
+<div class="table-responsive overflow-auto">
+  <table mat-table [dataSource]="tableData" class="mat-elevation-z1 w-full table-fixed !bg-white">
+    <!-- Dynamic column rendering -->
+    <ng-container *ngFor="let col of displayedColumns; let i = index" [matColumnDef]="col">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="text-left !h-9 !font-medium"
+        [ngClass]="[
+          i === 0
+            ? 'w-[133px] min-w-[133px] max-w-[133px]'
+            : 'w-[100px] min-w-[100px] max-w-[100px] !text-right',
+          col.includes('Jan') ? 'border-r border-gray-300' : ''
+        ]"
+      >
+        {{ col }}
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="!h-9"
+        [ngClass]="[
+          i === 0
+            ? 'w-[133px] min-w-[133px] max-w-[133px] text-left'
+            : 'w-[100px] min-w-[100px] max-w-[100px] !text-right',
+          col.includes('Jan') ? 'border-r border-gray-300' : ''
+        ]"
+      >
+        <ng-container *ngIf="col === 'D/L'; else normalCell">
+          <img [src]="element[col]" alt="trend" class="w-[13px] h-[13px] inline-block" />
         </ng-container>
+        <ng-template #normalCell>
+          {{ element[col] }}
+        </ng-template>
+      </td>
+      <td
+        mat-footer-cell
+        *matFooterCellDef
+        class="!font-medium"
+        [ngClass]="[
+          i === 0
+            ? 'w-[133px] min-w-[133px] max-w-[133px] text-left !p-0'
+            : 'w-[100px] min-w-[100px] max-w-[100px] !text-right',
+          col.includes('Jan') ? 'border-r border-gray-300' : ''
+        ]"
+      >
+        <ng-container *ngIf="col === 'D/L'; else totalCell">
+          <img src="images/download.png" alt="trend" class="w-[13px] h-[13px] inline-block" />
+        </ng-container>
+        <ng-template #totalCell>
+          {{ getTotal(col) }}
+        </ng-template>
+      </td>
+    </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <ng-container *ngIf="!currentPath.includes('competitors')">
+      <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </ng-container>
+  </table>
 </div>

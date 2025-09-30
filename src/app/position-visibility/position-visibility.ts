@@ -81,18 +81,18 @@ export class Ways {
       },
       xaxis: {
         categories: [
-          'WK17',
-          'WK18',
-          'WK19',
-          'WK20',
-          'WK21',
-          'WK22',
-          'WK23',
-          'WK24',
-          'WK25',
-          'WK26',
-          'WK27',
-          'WK28',
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec'
         ],
       },
       yaxis: { opposite: true },
@@ -130,7 +130,7 @@ export class Ways {
       [101, 111, 106, 116, 109, 113, 103, 113, 108, 118, 111, 115]
     ]
   };
-  onSelectPosition(category: string) {
+  onSelectPosition(category: any) {
     const data = this.categorySeriesData[category];
 
     if (data) {

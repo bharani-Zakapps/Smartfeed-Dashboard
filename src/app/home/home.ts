@@ -9,5 +9,5 @@ import { Header } from '../header/header';
   styleUrl: './home.css'
 })
 export class Home {
-
+  
 }

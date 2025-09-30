@@ -4,15 +4,15 @@
 
   <h3 *ngIf="title" class="mb-2 font-semibold">{{ title }}</h3>
 
-  <ul class="flex flex-col justify-between font-semibold text-sm pb-1 mb-2">
+  <ul class="flex flex-col justify-between font-semibold text-sm pb-1 mb-2 gap-1">
       <li *ngFor="let item of items" (click)="onSelect(item)"
-        class="cursor-pointer items-center hover:bg-gray-200 rounded flex justify-between h-[30px] p-[10px]"
-        [ngClass]="selectedItem === item ? 'bg-[#ACDAFF] border border-[#3BB1FF] font-medium' : 'hover:bg-transparent font-normal'">
+        class="cursor-pointer items-center rounded flex justify-between h-[30px] p-[10px]"
+        [ngClass]="this.selectedItem.indexOf(item.keyword || item.name || item) >= 0  ? 'bg-[#ACDAFF] border border-[#3BB1FF] font-medium' : 'hover:bg-transparent font-normal'">
 
-        <span>{{ item.keyword || item.name || item }}</span>
+        <span>{{ item.keyword || item.name || item  }}</span>
 
         <span *ngIf="item.volume" class="text-gray-500 text-sm">
-          {{ selectedItem === item ? '✖' : item.volume }}
+          {{ selectedItem.indexOf(item.keyword || item.name || item) >= 0 ? '✖' : item.volume }}
         </span>
       </li>
     </ul>

@@ -1,13 +1,27 @@
 <div class="flex gap-12 items-center bg-[#383838] text-white px-7 py-5 fixed top-0 w-full z-10">
-    <a href="/" class="header-logo">
-        <img src="images/logo.svg" alt="Smartfeed Logo">
+  <a href="/" class="header-logo">
+    <img src="images/logo.svg" alt="Smartfeed Logo" />
+  </a>
+  <div class="w-full">
+    <nav class="flex gap-5">
+      <a routerLink="department" routerLinkActive="!border-b-2" class="inline-block pb-2" 
+        >Department position</a
+      >
+      <a routerLink="competitors" routerLinkActive="!border-b-2" class="inline-block pb-2"
+        >Vs.competitors</a
+      >
+      <a routerLink="charts" routerLinkActive="!border-b-2" class="inline-block pb-2"
+        >Keyword tracker</a
+      >
+      <a routerLink="ways" routerLinkActive="!border-b-2" class="inline-block pb-2"
+        >Position visibility</a
+      >
+    </nav>
+  </div>
+  <div class="float-end whitespace-nowrap ">
+    <a href="/" class="header-logo underline flex items-center gap-3">
+      Smyths UK
+      <img src="images/dropdown.png" width="7.5px" height="3.5px">
     </a>
-    <div>
-        <nav class="flex gap-5">
-            <a routerLink="department" routerLinkActive="!border-b-2" class="inline-block pb-2">Department Position</a> 
-            <a routerLink="competitors" routerLinkActive="!border-b-2" class="inline-block pb-2">Vs.competitors</a>
-            <a routerLink="charts" routerLinkActive="!border-b-2" class="inline-block pb-2">Keyword tracker</a>
-            <a routerLink="ways" routerLinkActive="!border-b-2" class="inline-block pb-2">Position visibility</a>
-        </nav>
-    </div>
+  </div>
 </div>
