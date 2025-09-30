@@ -13,7 +13,7 @@ export class Department {
   currentHighValue: number | undefined;
   columns = [
     'Department',
-    'Sep %',
+    'Sep % ↓',
     'Aug %',
     'Jul %',
     'Jun %',
