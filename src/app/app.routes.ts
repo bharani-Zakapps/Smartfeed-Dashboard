@@ -3,7 +3,8 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./department/department').then((m) => m.Department),
+    redirectTo: 'department',
+    pathMatch: 'full'
   },
   {
     path: 'department',
