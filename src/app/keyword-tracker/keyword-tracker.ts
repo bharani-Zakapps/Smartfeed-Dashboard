@@ -35,7 +35,7 @@ export type ChartOptions = {
   templateUrl: './keyword-tracker.html',
   styleUrls: ['./keyword-tracker.css'],
 })
-export class ChartsComponent {
+export class keywordTracker {
   @ViewChild('chart') chart!: ChartComponent;
 
   selectedKeywords: any[] = [];

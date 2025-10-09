@@ -15,12 +15,12 @@ export const routes: Routes = [
     loadComponent: () => import('./competitors/competitors').then((m) => m.Competitors),
   },
   {
-    path: 'charts',
-    loadComponent: () => import('./keyword-tracker/keyword-tracker').then((m) => m.ChartsComponent),
+    path: 'keyword-tracker',
+    loadComponent: () => import('./keyword-tracker/keyword-tracker').then((m) => m.keywordTracker),
   },
   {
-    path: 'ways',
-    loadComponent: () => import('./position-visibility/position-visibility').then((m) => m.Ways), 
+    path: 'position-visibility',
+    loadComponent: () => import('./position-visibility/position-visibility').then((m) => m.PositionVisibility),
   },
   { path: '**', redirectTo: '' }, // fallback
 ];

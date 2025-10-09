@@ -36,7 +36,7 @@ export type WaysChartOptions = {
   templateUrl: './position-visibility.html',
   styleUrls: ['./position-visibility.css'],
 })
-export class Ways {
+export class PositionVisibility {
   @ViewChild('chart') chart!: ChartComponent;
 
   public chartOptions: WaysChartOptions;

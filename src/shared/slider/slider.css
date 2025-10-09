@@ -19,12 +19,10 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     background-image: url('/images/playhead.svg');
-    /* background-color: transparent !important; */
+    background-color: transparent !important;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    transform: rotate(180deg) !important;
-    background-color: rgb(59,177,225) !important;
-    outline: none;
+    outline: none !important;
   }
 ::ng-deep .custom-slider .ngx-slider .ngx-slider-bar-wrapper {
     padding-top: 6px !important;
