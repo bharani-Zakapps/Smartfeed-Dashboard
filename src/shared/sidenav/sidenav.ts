@@ -1,17 +1,20 @@
+import { F } from '@angular/cdk/keycodes';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './sidenav.html',
   styleUrl: './sidenav.css',
 })
 export class Sidenav {
   selectedItem: any = [];
   seletedItemsArray: any = [];
-
+  searchValue: string = '';
+  filteredItems: any[] = [];
   @Input() title: string = '';
   @Input() items: any[] = [];
   @Input() placeholder: string = 'Search...';
@@ -19,6 +22,7 @@ export class Sidenav {
 
   @Output() itemSelected = new EventEmitter<any[]>();
   ngOnInit() {
+    this.filteredItems = [...this.items];
     this.setDefaultSelection();
   }
 
@@ -35,7 +39,7 @@ export class Sidenav {
   setDefaultSelection() {
     let currentPath = window.location.pathname;
     if (
-      (currentPath === '/competitors' || currentPath === '/ways') &&
+      (currentPath === '/competitors' || currentPath === '/position-visibility') &&
       this.items.length > 0 &&
       this.selectedItem.length === 0
     ) {
@@ -47,16 +51,18 @@ export class Sidenav {
     }
   }
   onSelect(item: any) {
-    let currentPath = window.location.pathname;
-    let name = item.keyword || item.name || item;
-    if (currentPath === '/charts') {
-      if (this.selectedItem.length < 3 && this.selectedItem.indexOf(name) < 0) {
+    const currentPath = window.location.pathname;
+    const name = item.keyword || item.name || item;
+    const selectedIndex = this.selectedItem.indexOf(name);
+
+    if (currentPath === '/keyword-tracker') {
+      if (selectedIndex < 0 && this.selectedItem.length < 3) {
         this.selectedItem.push(name);
         this.seletedItemsArray.push(item);
         this.itemSelected.emit(this.seletedItemsArray);
-      } else if (this.selectedItem.indexOf(name) >= 0) {
-        this.selectedItem.splice(this.selectedItem.indexOf(name), 1);
-        this.seletedItemsArray.splice(this.selectedItem.indexOf(name), 1);
+      } else if (selectedIndex >= 0) {
+        this.selectedItem.splice(selectedIndex, 1);
+        this.seletedItemsArray.splice(selectedIndex, 1);
         this.itemSelected.emit(this.seletedItemsArray);
       }
     } else {
@@ -64,5 +70,15 @@ export class Sidenav {
       this.seletedItemsArray = [item];
       this.itemSelected.emit(this.seletedItemsArray);
     }
+  }
+
+  onSearch() {
+    const value = this.searchValue.toLowerCase();
+    this.filteredItems = this.items.filter(
+      (item) =>
+        item.keyword?.toLowerCase().includes(value) ||
+        item.name?.toLowerCase().includes(value) ||
+        String(item).toLowerCase().includes(value)
+    );
   }
 }
