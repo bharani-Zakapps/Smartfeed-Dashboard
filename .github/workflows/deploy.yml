@@ -3,7 +3,7 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main   # trigger on push to main branch
+      - main # trigger on push to main branch
 
 jobs:
   build-and-deploy:
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.12.0'   # or your preferred version
+          node-version: '22.12.0' # or your preferred version
 
       # 3️⃣ Install dependencies
       - name: Install Dependencies
@@ -31,7 +31,9 @@ jobs:
 
       # 5️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/smartfeed/browser
+          user_name: 'github-actions'
+          user_email: 'github-actions@github.com'
