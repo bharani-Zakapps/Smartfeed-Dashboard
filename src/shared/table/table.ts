@@ -13,7 +13,7 @@ export class Table {
   @Input() displayedColumns: string[] = [];
   @Input() tableData: any[] = [];
 
-  currentPath: string = window.location.pathname;
+  currentPath: string = window.location.pathname.replace('/Smartfeed-Dashboard', '');;
 
   getTotal(col: string): number | string {
     if (col === 'Department') {

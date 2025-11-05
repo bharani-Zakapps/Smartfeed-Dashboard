@@ -1,0 +1,37 @@
+name: Deploy Angular to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # trigger on push to main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout the repo
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.12.0'   # or your preferred version
+
+      # 3️⃣ Install dependencies
+      - name: Install Dependencies
+        run: npm ci
+
+      # 4️⃣ Build Angular project
+      - name: Build Angular App
+        run: |
+          npm run build -- --configuration production --base-href "https://bharani-zakapps.github.io/Smartfeed-Dashboard/"
+
+      # 5️⃣ Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/smartfeed/browser

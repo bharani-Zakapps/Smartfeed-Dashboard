@@ -37,7 +37,7 @@ export class Sidenav {
   }
 
   setDefaultSelection() {
-    let currentPath = window.location.pathname;
+    let currentPath = window.location.pathname.replace('/Smartfeed-Dashboard', '');
     if (
       (currentPath === '/competitors' || currentPath === '/position-visibility') &&
       this.items.length > 0 &&
@@ -51,12 +51,11 @@ export class Sidenav {
     }
   }
   onSelect(item: any) {
-    const currentPath = window.location.pathname;
-    const name = item.keyword || item.name || item;
-    const selectedIndex = this.selectedItem.indexOf(name);
-
+    let currentPath = window.location.pathname.replace('/Smartfeed-Dashboard', '');
+    let name = item.keyword || item.name || item;
+      const selectedIndex = this.selectedItem.indexOf(name);
     if (currentPath === '/keyword-tracker') {
-      if (selectedIndex < 0 && this.selectedItem.length < 3) {
+      if (this.selectedItem.length < 3 && this.selectedItem.indexOf(name) < 0) {
         this.selectedItem.push(name);
         this.seletedItemsArray.push(item);
         this.itemSelected.emit(this.seletedItemsArray);

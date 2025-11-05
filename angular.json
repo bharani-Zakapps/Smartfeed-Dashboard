@@ -65,6 +65,12 @@
           },
           "defaultConfiguration": "development"
         },
+        "deploy": {
+  "builder": "angular-cli-ghpages:deploy",
+  "options": {
+    "dir": "dist/smartfeed"
+  }
+},
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
         },

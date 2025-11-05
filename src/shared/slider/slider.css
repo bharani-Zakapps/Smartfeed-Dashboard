@@ -18,7 +18,7 @@
     background-color: #333;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    background-image: url('/images/playhead.svg');
+    background-image: url('https://bharani-zakapps.github.io/Smartfeed-Dashboard/images/playhead.svg');
     background-color: transparent !important;
     background-attachment: fixed;
     background-repeat: no-repeat;
