@@ -54,7 +54,7 @@ export class Sidenav {
     let currentPath = window.location.pathname.replace('/Smartfeed-Dashboard', '');
     let name = item.keyword || item.name || item;
       const selectedIndex = this.selectedItem.indexOf(name);
-    if (currentPath === '/keyword-tracker') {
+    if (currentPath.includes('/keyword-tracker')) {
       if (this.selectedItem.length < 3 && this.selectedItem.indexOf(name) < 0) {
         this.selectedItem.push(name);
         this.seletedItemsArray.push(item);
