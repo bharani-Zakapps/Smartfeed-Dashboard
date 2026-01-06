@@ -4,16 +4,16 @@
   </a>
   <div class="w-full">
     <nav class="flex gap-5">
-      <a routerLink="department" routerLinkActive="!border-b-2" class="inline-block pb-2" 
+      <a [routerLink]="['/seo', client(), 'department']" routerLinkActive="!border-b-2" class="inline-block pb-2" 
         >Department position</a
       >
-      <a routerLink="competitors" routerLinkActive="!border-b-2" class="inline-block pb-2"
+      <a [routerLink]="['/seo', client(), 'competitors']" routerLinkActive="!border-b-2" class="inline-block pb-2"
         >Vs.competitors</a
       >
-      <a routerLink="keyword-tracker" routerLinkActive="!border-b-2" class="inline-block pb-2"
+      <a [routerLink]="['/seo', client(), 'keyword-tracker']" routerLinkActive="!border-b-2" class="inline-block pb-2"
         >Keyword tracker</a
       >
-      <a routerLink="position-visibility" routerLinkActive="!border-b-2" class="inline-block pb-2"
+      <a [routerLink]="['/seo', client(), 'position-visibility']" routerLinkActive="!border-b-2" class="inline-block pb-2"
         >Position visibility</a
       >
     </nav>

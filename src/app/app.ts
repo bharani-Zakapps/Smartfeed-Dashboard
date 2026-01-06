@@ -12,5 +12,5 @@ import { Home } from './home/home';
   styleUrls: ['./app.css'],
 })
 export class App {
-  protected readonly title = signal('Smartfeed');
+  protected readonly title = signal('Factboard');
 }
