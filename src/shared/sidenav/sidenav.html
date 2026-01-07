@@ -2,36 +2,55 @@
 <div class="w-72 bg-gray-100 gap-4 flex flex-col">
   <!-- 🔍 Search Input -->
   <input
-  type="text"
-  [(ngModel)]="searchValue"
-  (input)="onSearch()"
-  [placeholder]="placeholder"
-  class="border p-2 rounded w-full mb-2"
-/>
+    type="text"
+    [(ngModel)]="searchValue"
+    (input)="onSearch()"
+    [placeholder]="placeholder"
+    class="border p-2 rounded w-full mb-2"
+  />
 
   <h3 *ngIf="title" class="mb-2 font-semibold">{{ title }}</h3>
-  <div *ngIf="currentPath.includes('/keyword-tracker')" class="flex justify-between font-medium text-sm pl-[10px] pr-[10px]">
+  <div
+    *ngIf="currentPath.includes('/keyword-tracker')"
+    class="flex justify-between font-medium text-sm pl-[10px] pr-[10px]"
+  >
     <span>Keyword</span>
     <span>Search Vol.</span>
   </div>
- <ul class="flex flex-col justify-between font-semibold text-sm pb-1 mb-2 gap-1">
-  <li
-    *ngFor="let item of filteredItems"
-    (click)="onSelect(item)"
-    class="cursor-pointer items-center rounded flex justify-between h-[30px] p-[10px] font-normal"
-    [ngClass]="{
-      'bg-[#ACDAFF] border border-[#3BB1FF]':
-        selectedItem.indexOf(item.keyword || item.name || item) >= 0,
-      'hover:bg-transparent text-gray-400':
-        selectedItem.indexOf(item.keyword || item.name || item) < 0 && selectedItem.length >= 3,
-      'hover:bg-transparent':
-        selectedItem.indexOf(item.keyword || item.name || item) < 0 && selectedItem.length < 3
-    }"
+
+  <div
+    *ngIf="currentPath.includes('/position-visibility')"
+    class="font-medium text-sm pl-[10px] pr-[10px]"
   >
-    <span>{{ item.keyword || item.name || item }}</span>
-    <span *ngIf="item.volume" class="text-gray-500 text-sm">
-      {{ selectedItem.indexOf(item.keyword || item.name || item) >= 0 ? '✖' : item.volume }}
-    </span>
-  </li>
-</ul>
+    <span>Keyword</span>
+  </div>
+  
+  <ul class="flex flex-col justify-between font-semibold text-sm pb-1 mb-2 gap-1">
+    <li
+      *ngFor="let item of filteredItems"
+      (click)="onSelect(item)"
+      class="cursor-pointer items-center rounded flex justify-between h-[30px] p-[10px] font-normal"
+      [ngClass]="{
+        'bg-[#ACDAFF] border border-[#3BB1FF]':
+          selectedItem.indexOf(item.keyword || item.name || item) >= 0,
+        'hover:bg-transparent text-gray-400':
+          selectedItem.indexOf(item.keyword || item.name || item) < 0 && selectedItem.length >= 3,
+        'hover:bg-transparent':
+          selectedItem.indexOf(item.keyword || item.name || item) < 0 && selectedItem.length < 3
+      }"
+    >
+      <span>{{ item.keyword || item.name || item }}</span>
+      <span *ngIf="item.volume" class="text-gray-500 text-sm">
+        <img
+          *ngIf="selectedItem.indexOf(item.keyword || item.name || item) >= 0"
+          src="images/closeSvg.svg"
+          alt="remove"
+          class="inline-block w-[10px] h-[10px] cursor-pointer"
+        />
+        <span *ngIf="selectedItem.indexOf(item.keyword || item.name || item) < 0">
+          {{ item.volume }}
+        </span>
+      </span>
+    </li>
+  </ul>
 </div>

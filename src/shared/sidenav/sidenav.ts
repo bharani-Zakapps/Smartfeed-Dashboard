@@ -1,4 +1,3 @@
-import { F } from '@angular/cdk/keycodes';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './sidenav.html',
   styleUrl: './sidenav.css',
 })
-export class Sidenav {
+export class Sidenav implements OnChanges {
   selectedItem: any = [];
   seletedItemsArray: any = [];
   searchValue: string = '';
@@ -30,11 +29,12 @@ export class Sidenav {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['chipKeywords']) {
+    if (changes['chipKeywords'] && this.chipKeywords && this.chipKeywords.length > 0) {
       this.seletedItemsArray = this.chipKeywords;
       this.selectedItem = this.chipKeywords.map((k) => k.keyword);
     }
     if (changes['items'] && this.items.length > 0) {
+      this.filteredItems = [...this.items];
       this.setDefaultSelection();
     }
   }
@@ -42,22 +42,25 @@ export class Sidenav {
   setDefaultSelection() {
     const currentPath = this.currentPath;
     console.log('Current Path:', currentPath);
-    if (
-      (currentPath === '/competitors' || currentPath === '/position-visibility') &&
-      this.items.length > 0 &&
-      this.selectedItem.length === 0
-    ) {
+    
+    // Select first item by default for all pages EXCEPT keyword tracker
+    if (this.items.length > 0 && this.selectedItem.length === 0 && !currentPath.includes('/keyword-tracker')) {
       const firstItem = this.items[0];
       const name = firstItem.keyword || firstItem.name || firstItem;
+      
       this.selectedItem = [name];
       this.seletedItemsArray = [firstItem];
+      
+      // Emit the selection
       this.itemSelected.emit(this.seletedItemsArray);
     }
   }
+
   onSelect(item: any) {
     let currentPath = window.location.pathname.replace('/Smartfeed-Dashboard', '');
     let name = item.keyword || item.name || item;
-      const selectedIndex = this.selectedItem.indexOf(name);
+    const selectedIndex = this.selectedItem.indexOf(name);
+    
     if (currentPath.includes('/keyword-tracker')) {
       if (this.selectedItem.length < 3 && this.selectedItem.indexOf(name) < 0) {
         this.selectedItem.push(name);

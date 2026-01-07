@@ -1,55 +1,53 @@
-  ::ng-deep .custom-slider .ngx-slider .ngx-slider-bar {
-    background: #fff;
-    height: 6px;
-    border-radius: 0 !important;
-    border: 1px solid var(--border, #E8E8E8);
-  }
+::ng-deep .custom-slider .ngx-slider .ngx-slider-bar {
+  background: #fff;
+  height: 6px;
+  border-radius: 0 !important;
+  border: 1px solid var(--border, #e8e8e8);
+}
 ::ng-deep .custom-slider .ngx-slider .ngx-slider-selection {
-    background: #3BB1FF;
-    border: 1px solid #1994E6
-
+  background: #3bb1ff;
+  border: 1px solid #1994e6;
 }
 
-  ::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer {
-    width: 8px;
-    height: 16px;
-    top: auto; 
-    bottom: auto;
-    background-color: #333;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    background-image: url('https://bharani-zakapps.github.io/Smartfeed-Dashboard/images/playhead.svg');
-    background-color: transparent !important;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    outline: none !important;
-  }
+::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer {
+  width: 8px;
+  height: 16px;
+  top: auto;
+  bottom: auto;
+  background-color: #333;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-image: url('https://bharani-zakapps.github.io/Smartfeed-Dashboard/images/playhead.svg');
+  background-color: transparent !important;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  outline: none !important;
+}
 ::ng-deep .custom-slider .ngx-slider .ngx-slider-bar-wrapper {
-    padding-top: 6px !important;
+  padding-top: 6px !important;
 }
-  ::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer:after {
-    display: none;
-  }
+::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer:after {
+  display: none;
+}
 
-  ::ng-deep .custom-slider .ngx-slider .ngx-slider-bubble {
-    bottom: 14px;
-  }
+::ng-deep .custom-slider .ngx-slider .ngx-slider-bubble {
+  bottom: 14px;
+}
 
-  ::ng-deep .custom-slider .ngx-slider .ngx-slider-bubble.ngx-slider-limit {
-    font-weight: bold;
-    color: orange;
-  }
+::ng-deep .custom-slider .ngx-slider .ngx-slider-bubble.ngx-slider-limit {
+  font-weight: bold;
+  color: orange;
+}
 
-  ::ng-deep .custom-slider .ngx-slider .ngx-slider-tick {
-    width: 1px;
-    height: 10px;
-    margin-left: 4px;
-    border-radius: 0;
-    background: transparent;
-    top: -1px;
+::ng-deep .custom-slider .ngx-slider .ngx-slider-tick {
+  width: 1px;
+  height: 10px;
+  margin-left: 4px;
+  border-radius: 0;
+  background: transparent;
+  top: -1px;
+}
 
-  }
-
-  ::ng-deep .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
-    background: transparent;
-  }
+::ng-deep .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+  background: transparent;
+}

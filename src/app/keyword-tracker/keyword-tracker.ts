@@ -44,7 +44,7 @@ export class keywordTracker {
     series: [],
     chart: {
       type: 'line',
-      height: 250,
+      height: 400,
       toolbar: {
         show: true,
         tools: {
@@ -74,6 +74,10 @@ export class keywordTracker {
       },
     },
     yaxis: {
+      min: 0,
+      max: 10,
+      reversed: true,
+      tickAmount: 10,
       axisBorder: {
         show: true,
         color: '#000000',
@@ -132,8 +136,8 @@ export class keywordTracker {
   ];
 
   onSelectKeyword(keywords: any[]) {
-      this.selectedKeywords = keywords;
-      this.updateChart();
+    this.selectedKeywords = keywords;
+    this.updateChart();
   }
 
   onDeleteKeyword(keyword: string) {
@@ -162,7 +166,4 @@ export class keywordTracker {
       this.chart.updateOptions(this.chartOptions);
     }
   }
-
-
-   
 }
