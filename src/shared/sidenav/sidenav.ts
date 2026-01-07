@@ -21,6 +21,9 @@ export class Sidenav {
   @Input() chipKeywords: any[] = [];
 
   @Output() itemSelected = new EventEmitter<any[]>();
+
+  currentPath: string = window.location.pathname.replace('/Smartfeed-Dashboard', '');
+
   ngOnInit() {
     this.filteredItems = [...this.items];
     this.setDefaultSelection();
@@ -37,7 +40,8 @@ export class Sidenav {
   }
 
   setDefaultSelection() {
-    let currentPath = window.location.pathname.replace('/Smartfeed-Dashboard', '');
+    const currentPath = this.currentPath;
+    console.log('Current Path:', currentPath);
     if (
       (currentPath === '/competitors' || currentPath === '/position-visibility') &&
       this.items.length > 0 &&

@@ -10,7 +10,10 @@
 />
 
   <h3 *ngIf="title" class="mb-2 font-semibold">{{ title }}</h3>
-  <!-- 📜 Filtered List -->
+  <div *ngIf="currentPath.includes('/keyword-tracker')" class="flex justify-between font-medium text-sm pl-[10px] pr-[10px]">
+    <span>Keyword</span>
+    <span>Search Vol.</span>
+  </div>
  <ul class="flex flex-col justify-between font-semibold text-sm pb-1 mb-2 gap-1">
   <li
     *ngFor="let item of filteredItems"
