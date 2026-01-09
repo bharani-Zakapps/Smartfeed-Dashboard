@@ -25,6 +25,7 @@ export class ClientDataService {
 
   clientInfo = signal<any | null>(null);
   regionInfo = signal<any | null>(null);
+  selectedRegion = signal<RegionInfo | null>(null)
 
   loadClientInfo() {
     const client = this.clientContext.client();
@@ -38,10 +39,11 @@ export class ClientDataService {
           if (!clientId) return;
 
           this.api
-            .get<ApiResponse<RegionInfo>>('/region-info', { clientId })
+            .get<ApiResponse<RegionInfo[]>>('/region-info', { clientId })
             ?.subscribe((regionRes) => {
               if (regionRes.success) {
                 this.regionInfo.set(regionRes.data);
+                this.selectedRegion.set(regionRes?.data[0])
               }
             });
         }

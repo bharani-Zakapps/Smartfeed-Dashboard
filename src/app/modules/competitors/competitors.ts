@@ -54,9 +54,10 @@ export class Competitors {
 
   onCategorySelect(selectedDepartment: department[]) {
     const client = this.clientData?.clientInfo();
-    const region = this.clientData?.regionInfo();
+    const region = this.clientData?.selectedRegion();
     const clientId = client?.clientId;
-    const regionId = region[0]?.regionId;
+    if (!region) return;
+    const regionId = region.regionId;
     this.departmentApi
       .getCompetitorHeader<ApiResponse<competitorHeader>>(
         clientId,
@@ -69,6 +70,7 @@ export class Competitors {
         }
       });
   }
+
   handleChildValue(value: number, highValue: number) {
     this.currentValue = value;
     this.currentHighValue = highValue;
@@ -82,19 +84,30 @@ export class Competitors {
   constructor() {
     effect(() => {
       const client = this.clientData?.clientInfo();
-      const region = this.clientData?.regionInfo();
+      const region = this.clientData?.selectedRegion();
       const clientId = client?.clientId;
       if (!clientId) return;
-      
-      if (!region || region.length === 0) return;
 
-      const regionId = region[0]?.regionId;
+      if (!region) return;
+      const regionId = region.regionId;
       if (!regionId) return;
       this.departmentApi
         .getDepartmentsByRegion<ApiResponse<department[]>>(clientId, regionId)
         .subscribe((res) => {
           if (res.success) {
             this.departments.set(res.data);
+
+            this.departmentApi
+              .getCompetitorHeader<ApiResponse<competitorHeader>>(
+                clientId,
+                regionId,
+                res.data[0].departmentId
+              )
+              .subscribe((res) => {
+                if (res.success) {
+                  this.tableHeader = res.data;
+                }
+              });
           }
         });
     });

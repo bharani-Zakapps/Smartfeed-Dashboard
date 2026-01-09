@@ -1,27 +1,47 @@
 <div class="flex gap-12 items-center bg-[#383838] text-white px-7 py-5 fixed top-0 w-full z-10">
   <a href="/" class="header-logo">
-    <img src="images/logo.svg" alt="Smartfeed Logo" />
+    <img src="images/logo.svg" alt="Smartfeed Logo" class="max-w-64"/>
   </a>
-  <div class="w-full">
-    <nav class="flex gap-5">
-      <a [routerLink]="['/seo', client(), 'department']" routerLinkActive="!border-b-2" class="inline-block pb-2" 
+  <div class="w-full flex justify-start">
+    <nav class="flex gap-5 items-center">
+      <a
+        [routerLink]="['/seo', client(), 'department']"
+        routerLinkActive="!border-b-2"
+        class="inline-block pb-2"
         >Department position</a
       >
-      <a [routerLink]="['/seo', client(), 'competitors']" routerLinkActive="!border-b-2" class="inline-block pb-2"
+      <a
+        [routerLink]="['/seo', client(), 'competitors']"
+        routerLinkActive="!border-b-2"
+        class="inline-block pb-2"
         >Vs.competitors</a
       >
-      <a [routerLink]="['/seo', client(), 'keyword-tracker']" routerLinkActive="!border-b-2" class="inline-block pb-2"
+      <a
+        [routerLink]="['/seo', client(), 'keyword-tracker']"
+        routerLinkActive="!border-b-2"
+        class="inline-block pb-2"
         >Keyword tracker</a
       >
-      <a [routerLink]="['/seo', client(), 'position-visibility']" routerLinkActive="!border-b-2" class="inline-block pb-2"
+      <a
+        [routerLink]="['/seo', client(), 'position-visibility']"
+        routerLinkActive="!border-b-2"
+        class="inline-block pb-2"
         >Position visibility</a
       >
     </nav>
   </div>
-  <div class="float-end whitespace-nowrap ">
-    <a href="/" class="header-logo underline flex items-center gap-3">
-      {{client() || "" | firstLetterUppercase}}
-      <img src="images/dropdown.png" width="7.5px" height="3.5px">
-    </a>
+  <div class="relative flex items-center justify-end gap-3 cursor-pointer select-none w-full">
+    <!-- Trigger -->
+    <div (click)="toggleDropdown()" class="flex items-center gap-3">
+      <span>{{ selectedRegion.regionName || '' | firstLetterUppercase }}</span>
+      <img src="images/dropdown.png" width="7.5px" height="3.5px" />
+    </div>
+
+    <!-- Dropdown -->
+    <app-dropdown-select
+      *ngIf="dropdownOpen()"
+      [options]="regionData"
+      (selectedChange)="onSelect($event)"
+    ></app-dropdown-select>
   </div>
 </div>
