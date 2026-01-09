@@ -1,13 +1,25 @@
 import { Component, inject, signal } from '@angular/core';
-import { Table } from '../../shared/table/table';
-import { Slider } from '../../shared/slider/slider';
-import { DepartmentApi } from './api/department.api';
-import { DepartmentRow } from './types/department.model';
+// import { Table } from '../../../shared/table/table';
+import { Slider } from '../../../shared/slider/slider';
+import { DepartmentApi } from './department.api';
 import { ActivatedRoute } from '@angular/router';
+
+export interface DepartmentRow {
+  Department: string;
+  'Sep %': number;
+  'Aug %': number;
+  'Jul %': number;
+  'Jun %': number;
+  'May %': number;
+  'Apr %': number;
+  'Mar %': number;
+  Keywords: number;
+  'D/L': string;
+}
 
 @Component({
   selector: 'app-department',
-  imports: [Table, Slider],
+  imports: [Slider],
     standalone: true,
   templateUrl: './department.html',
   styleUrl: './department.css',

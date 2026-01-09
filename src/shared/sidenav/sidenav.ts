@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { department } from '../../app/modules/competitors/competitors';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,14 +11,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './sidenav.css',
 })
 export class Sidenav implements OnChanges {
+  @Input() title: string = '';
+  @Input() items: department[] = [];
+  @Input() placeholder: string = 'Search...';
+  @Input() chipKeywords: any[] = [];
+
   selectedItem: any = [];
   seletedItemsArray: any = [];
   searchValue: string = '';
   filteredItems: any[] = [];
-  @Input() title: string = '';
-  @Input() items: any[] = [];
-  @Input() placeholder: string = 'Search...';
-  @Input() chipKeywords: any[] = [];
 
   @Output() itemSelected = new EventEmitter<any[]>();
 
@@ -42,15 +44,18 @@ export class Sidenav implements OnChanges {
   setDefaultSelection() {
     const currentPath = this.currentPath;
     console.log('Current Path:', currentPath);
-    
+
     // Select first item by default for all pages EXCEPT keyword tracker
-    if (this.items.length > 0 && this.selectedItem.length === 0 && !currentPath.includes('/keyword-tracker')) {
+    if (
+      this.items.length > 0 &&
+      this.selectedItem.length === 0 &&
+      !currentPath.includes('/keyword-tracker')
+    ) {
       const firstItem = this.items[0];
-      const name = firstItem.keyword || firstItem.name || firstItem;
-      
-      this.selectedItem = [name];
+
+      this.selectedItem = [firstItem.departmentId];
       this.seletedItemsArray = [firstItem];
-      
+
       // Emit the selection
       this.itemSelected.emit(this.seletedItemsArray);
     }
@@ -58,9 +63,9 @@ export class Sidenav implements OnChanges {
 
   onSelect(item: any) {
     let currentPath = window.location.pathname.replace('/Smartfeed-Dashboard', '');
-    let name = item.keyword || item.name || item;
+    let name = item.departmentId || item.name || item;
     const selectedIndex = this.selectedItem.indexOf(name);
-    
+
     if (currentPath.includes('/keyword-tracker')) {
       if (this.selectedItem.length < 3 && this.selectedItem.indexOf(name) < 0) {
         this.selectedItem.push(name);
@@ -82,8 +87,7 @@ export class Sidenav implements OnChanges {
     const value = this.searchValue.toLowerCase();
     this.filteredItems = this.items.filter(
       (item) =>
-        item.keyword?.toLowerCase().includes(value) ||
-        item.name?.toLowerCase().includes(value) ||
+        item.departmentName?.toLowerCase().includes(value) ||
         String(item).toLowerCase().includes(value)
     );
   }

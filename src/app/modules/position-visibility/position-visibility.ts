@@ -12,8 +12,8 @@ import {
   ApexFill,
   ApexDataLabels,
 } from 'ng-apexcharts';
-import { Sidenav } from '../../shared/sidenav/sidenav';
-import { MonthView } from '../../shared/month-view/month-view';
+// import { Sidenav } from '../../../shared/sidenav/sidenav';
+import { MonthView } from '../../../shared/month-view/month-view';
 
 export type WaysChartOptions = {
   series: ApexAxisChartSeries;
@@ -32,7 +32,7 @@ export type WaysChartOptions = {
 @Component({
   selector: 'app-ways',
   standalone: true,
-  imports: [NgApexchartsModule, Sidenav,MonthView],
+  imports: [NgApexchartsModule,MonthView],
   templateUrl: './position-visibility.html',
   styleUrls: ['./position-visibility.css'],
 })

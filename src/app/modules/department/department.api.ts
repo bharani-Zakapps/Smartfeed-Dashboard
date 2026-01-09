@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { ApiService } from '../../core/api/api.service';
-import { DepartmentRow } from '../types/department.model';
+import { DepartmentRow } from './department';
 
 @Injectable({ providedIn: 'root' })
 export class DepartmentApi {

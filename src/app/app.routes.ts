@@ -2,32 +2,27 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'seo/default-client/department',
-    pathMatch: 'full'
-  },
-  {
     path: 'seo/:client',
     children: [
       {
         path: 'department',
         loadComponent: () =>
-          import('./department/department').then(m => m.Department),
+          import('./modules/department/department').then(m => m.Department),
       },
       {
         path: 'competitors',
         loadComponent: () =>
-          import('./competitors/competitors').then(m => m.Competitors),
+          import('./modules/competitors/competitors').then(m => m.Competitors),
       },
       {
         path: 'keyword-tracker',
         loadComponent: () =>
-          import('./keyword-tracker/keyword-tracker').then(m => m.keywordTracker),
+          import('./modules/keyword-tracker/keyword-tracker').then(m => m.keywordTracker),
       },
       {
         path: 'position-visibility',
         loadComponent: () =>
-          import('./position-visibility/position-visibility').then(m => m.PositionVisibility),
+          import('./modules/position-visibility/position-visibility').then(m => m.PositionVisibility),
       },
     ]
   },

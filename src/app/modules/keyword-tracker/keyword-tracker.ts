@@ -14,8 +14,8 @@ import {
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { Sidenav } from '../../shared/sidenav/sidenav';
-import { MonthView } from '../../shared/month-view/month-view';
+// import { Sidenav } from '../../../shared/sidenav/sidenav';
+import { MonthView } from '../../../shared/month-view/month-view';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -31,7 +31,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-charts',
   standalone: true,
-  imports: [NgApexchartsModule, Sidenav, MonthView, MatChipsModule, MatIconModule, CommonModule],
+  imports: [NgApexchartsModule, MonthView, MatChipsModule, MatIconModule, CommonModule],
   templateUrl: './keyword-tracker.html',
   styleUrls: ['./keyword-tracker.css'],
 })

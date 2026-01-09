@@ -1,7 +1,7 @@
 <div class="table-responsive overflow-auto">
-  <table mat-table [dataSource]="tableData" class="mat-elevation-z1 w-full table-fixed !bg-white">
+  <!-- <table mat-table [dataSource]="tableData" class="mat-elevation-z1 w-full table-fixed !bg-white">
     <!-- Dynamic column rendering -->
-    <ng-container *ngFor="let col of displayedColumns; let i = index" [matColumnDef]="col">
+  <!-- <ng-container *ngFor="let col of displayedColumns; let i = index" [matColumnDef]="col">
       <th
         mat-header-cell
         *matHeaderCellDef
@@ -51,12 +51,59 @@
           {{ getTotal(col) }}
         </ng-template>
       </td>
-    </ng-container>
+    </ng-container> -->
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     <ng-container *ngIf="!currentPath.includes('competitors')">
       <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
     </ng-container>
+  </table> -->
+
+  <table class="w-full table-fixed border-collapse bg-white">
+    <thead>
+      <tr>
+        <th class="px-3 py-2 text-left font-medium w-[150px]">Division</th>
+
+        <th class="px-3 py-2 text-right font-medium w-[100px]">
+          {{ displayedColumns.clientName  | firstLetterUppercase }}
+        </th>
+
+        <th
+          *ngFor="let comp of displayedColumns.competitors"
+          class="px-3 py-2 text-right font-medium w-[100px]"
+        >
+          {{ comp }}
+        </th>
+
+        <th class="px-3 py-2 text-right font-medium w-[100px]">Keywords</th>
+
+        <th class="px-3 py-2 text-right font-medium w-[100px]">D/L</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let row of tableData">
+        <td class="px-3 py-2 text-left border-t w-[150px]">
+          {{ row.division }}
+        </td>
+
+        <td class="px-3 py-2 text-right border-t w-[100px]">
+          {{ row.client }}
+        </td>
+
+        <td *ngFor="let value of row.competitors" class="px-3 py-2 text-right border-t w-[100px]">
+          {{ value }}
+        </td>
+
+        <td class="px-3 py-2 text-right border-t w-[100px]">
+          {{ row.keywords }}
+        </td>
+
+        <td class="px-3 py-2 text-right border-t w-[100px]">
+          <img src="images/download.png" alt="trend" class="w-[13px] h-[13px] inline-block" />
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>

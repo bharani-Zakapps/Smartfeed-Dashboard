@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 // import { ChartsComponent } from './charts/charts';
 // import { Ways } from './ways/ways';
-import { Home } from './home/home';
+import { Home } from './Layout/home/home';
 
 
 @Component({

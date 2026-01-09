@@ -9,10 +9,8 @@ export class ApiService {
 
   private baseUrl = computed(() => {
     const client = this.clientContext.client();
-    if (!client) {
-      throw new Error('Client not resolved yet');
-    }
-    return `/api/seo/${client}`;
+   if (!client) return null;
+    return `${'http://192.168.18.133:8011'}/api/seo/${client}`;
   });
 
   get<T>(url: string, params?: Record<string, any>) {

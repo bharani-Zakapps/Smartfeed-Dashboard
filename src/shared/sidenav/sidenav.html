@@ -24,7 +24,7 @@
   >
     <span>Keyword</span>
   </div>
-  
+
   <ul class="flex flex-col justify-between font-semibold text-sm pb-1 mb-2 gap-1">
     <li
       *ngFor="let item of filteredItems"
@@ -32,14 +32,14 @@
       class="cursor-pointer items-center rounded flex justify-between h-[30px] p-[10px] font-normal"
       [ngClass]="{
         'bg-[#ACDAFF] border border-[#3BB1FF]':
-          selectedItem.indexOf(item.keyword || item.name || item) >= 0,
+          selectedItem.indexOf(item.departmentId || item.name || item) >= 0,
         'hover:bg-transparent text-gray-400':
-          selectedItem.indexOf(item.keyword || item.name || item) < 0 && selectedItem.length >= 3,
+          selectedItem.indexOf(item.departmentId || item.name || item) < 0 && selectedItem.length >= 3,
         'hover:bg-transparent':
-          selectedItem.indexOf(item.keyword || item.name || item) < 0 && selectedItem.length < 3
+          selectedItem.indexOf(item.departmentId || item.name || item) < 0 && selectedItem.length < 3
       }"
     >
-      <span>{{ item.keyword || item.name || item }}</span>
+      <span>{{ item.departmentName || item.name || item }}</span>
       <span *ngIf="item.volume" class="text-gray-500 text-sm">
         <img
           *ngIf="selectedItem.indexOf(item.keyword || item.name || item) >= 0"
